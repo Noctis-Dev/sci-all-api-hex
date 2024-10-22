@@ -4,17 +4,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.noctisdev.sciallhexvsg.auth.infraestructure.entities.ContactEntity;
 
-import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.UUID;
 
-/**
- * DTO for {@link ContactEntity}
- */
-@Getter
-@Setter
-public class Contact implements Serializable {
+@Getter @Setter
+public class Contact {
     private Long id;
 
     @NotNull
@@ -26,4 +21,8 @@ public class Contact implements Serializable {
 
     @Size(max = 70)
     private String email;
+
+    private LocalDate createdAt;
+
+    private User user;
 }

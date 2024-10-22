@@ -8,19 +8,19 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "contacts", schema = "sci_all_db")
+@Table(name = "contacts")
 public class ContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id", nullable = false)
     private Long id;
 
-    @Size(max = 36)
     @NotNull
     @JdbcTypeCode(SqlTypes.VARCHAR)
     @Column(name = "contact_uuid", nullable = false, length = 36)
@@ -30,7 +30,15 @@ public class ContactEntity {
     @Column(name = "phone_number", length = 15)
     private String phoneNumber;
 
-    @Size(max = 70)
-    @Column(name = "email", length = 70)
+    @Size(max = 55)
+    @Column(name = "email", length = 55)
     private String email;
+
+    @NotNull
+    @Column(name = "created_at", nullable = false)
+    private LocalDate createdAt;
+
+    @OneToOne(mappedBy = "contactEntity")
+    private UserEntity userEntity;
+
 }

@@ -4,7 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.noctisdev.sciallhexvsg.auth.domain.models.Contact;
 import org.noctisdev.sciallhexvsg.auth.domain.repository.IContactRepository;
 import org.noctisdev.sciallhexvsg.auth.infraestructure.mapper.IContactMapper;
-import org.noctisdev.sciallhexvsg.auth.infraestructure.repository.jpa.ContactRepository;
+import org.noctisdev.sciallhexvsg.auth.infraestructure.repository.jpa.ContactEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +14,10 @@ import java.util.UUID;
 public class ContactRepositoryImpl implements IContactRepository {
 
     @Autowired
-    private ContactRepository jpaRepository;
+    private IContactMapper mapper;
 
     @Autowired
-    private IContactMapper mapper;
+    private ContactEntityRepository jpaRepository;
 
     @Override
     public Contact create(Contact contact) {
@@ -26,7 +26,6 @@ public class ContactRepositoryImpl implements IContactRepository {
 
     @Override
     public Contact find(UUID uuid) {
-        return mapper.toDomain(jpaRepository.findByContactUuid(uuid).orElseThrow(EntityNotFoundException::new));
+        return jpaRepository.findByContactUuid(uuid).map(mapper::toDomain).orElseThrow(EntityNotFoundException::new);
     }
-
 }

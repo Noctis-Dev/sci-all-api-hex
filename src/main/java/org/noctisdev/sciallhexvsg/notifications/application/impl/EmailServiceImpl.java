@@ -1,7 +1,7 @@
 package org.noctisdev.sciallhexvsg.notifications.application.impl;
 
 import org.noctisdev.sciallhexvsg.notifications.application.IEmailService;
-import org.noctisdev.sciallhexvsg.notifications.domain.ISMTP;
+import org.noctisdev.sciallhexvsg.notifications.domain.external.ISMTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

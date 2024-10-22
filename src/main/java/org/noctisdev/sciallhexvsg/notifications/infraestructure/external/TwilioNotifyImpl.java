@@ -2,7 +2,7 @@ package org.noctisdev.sciallhexvsg.notifications.infraestructure.external;
 
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
-import org.noctisdev.sciallhexvsg.notifications.domain.INotify;
+import org.noctisdev.sciallhexvsg.notifications.domain.external.INotify;
 import org.noctisdev.sciallhexvsg.notifications.infraestructure.configurations.TwilioConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

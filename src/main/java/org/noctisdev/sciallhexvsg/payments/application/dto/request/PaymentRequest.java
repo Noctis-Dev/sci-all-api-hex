@@ -1,9 +1,8 @@
 package org.noctisdev.sciallhexvsg.payments.application.dto.request;
 
-import org.noctisdev.sciallhexvsg.payments.domain.models.PaymentType;
+import java.util.UUID;
 
 public record PaymentRequest(
-    String paymentProfileId,
-    String description,
-    String type
+    UUID paymentProfileId,
+    Double amount
 ) { }

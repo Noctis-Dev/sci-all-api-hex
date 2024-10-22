@@ -1,8 +1,8 @@
 package org.noctisdev.sciallhexvsg.payments.application;
 
 import org.noctisdev.sciallhexvsg.payments.application.dto.request.PaymentRequest;
-import org.noctisdev.sciallhexvsg.payments.domain.models.Payment;
+import org.noctisdev.sciallhexvsg.shared.BaseResponse;
 
 public interface IPaymentService {
-    Payment generatePayment(PaymentRequest payment);
+    BaseResponse generatePayment(PaymentRequest payment);
 }
