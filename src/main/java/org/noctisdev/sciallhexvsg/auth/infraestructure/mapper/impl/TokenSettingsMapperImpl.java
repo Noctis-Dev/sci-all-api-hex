@@ -1,7 +1,9 @@
 package org.noctisdev.sciallhexvsg.auth.infraestructure.mapper.impl;
 
 import org.noctisdev.sciallhexvsg.auth.domain.models.TokenSetting;
+import org.noctisdev.sciallhexvsg.auth.domain.models.enums.TokenType;
 import org.noctisdev.sciallhexvsg.auth.infraestructure.entities.TokenSettingEntity;
+import org.noctisdev.sciallhexvsg.auth.infraestructure.entities.enums.TokenTypeEntity;
 import org.noctisdev.sciallhexvsg.auth.infraestructure.mapper.ITokenSettingsMapper;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +16,9 @@ public class TokenSettingsMapperImpl implements ITokenSettingsMapper {
 
         tokenSetting.setId(entity.getId());
         tokenSetting.setIsActive(entity.getIsActive());
-        tokenSetting.setAuthTokenExpirationDays(entity.getAuthTokenExpirationDays());
-        tokenSetting.setVerifyTokenExpirationDays(entity.getVerifyTokenExpirationDays());
+        tokenSetting.setTokenExpiration(entity.getTokenExpiration());
+        tokenSetting.setRefreshTokenExpiration(entity.getRefreshTokenExpiration());
+        tokenSetting.setTokenType(TokenType.valueOf(entity.getTokenTypeEntity().name()));
 
         return tokenSetting;
     }
@@ -26,8 +29,9 @@ public class TokenSettingsMapperImpl implements ITokenSettingsMapper {
 
         tokenSettingEntity.setId(model.getId());
         tokenSettingEntity.setIsActive(model.getIsActive());
-        tokenSettingEntity.setAuthTokenExpirationDays(model.getAuthTokenExpirationDays());
-        tokenSettingEntity.setVerifyTokenExpirationDays(model.getVerifyTokenExpirationDays());
+        tokenSettingEntity.setTokenExpiration(model.getTokenExpiration());
+        tokenSettingEntity.setRefreshTokenExpiration(model.getRefreshTokenExpiration());
+        tokenSettingEntity.setTokenTypeEntity(TokenTypeEntity.valueOf(model.getTokenType().name()));
 
         return tokenSettingEntity;
     }

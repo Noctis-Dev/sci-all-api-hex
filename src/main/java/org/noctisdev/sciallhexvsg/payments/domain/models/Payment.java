@@ -12,20 +12,13 @@ import java.time.LocalDate;
 public class Payment {
 
     @NotNull
-    private Long paymentId;
+    private Long id;
 
     @NotBlank
     @UUID
-    private String paymentUuid;
+    private java.util.UUID paymentUuid;
 
-    @NotBlank
-    private String description;
+    private Double amount;
 
-    @NotNull
-    private LocalDate date;
-
-    @NotBlank
-    private String paymentUrl;
-
-    private PaymentType paymentType;
+    private PaymentProfile paymentProfile;
 }

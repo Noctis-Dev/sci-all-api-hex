@@ -2,7 +2,7 @@ package org.noctisdev.sciallhexvsg.notifications.infraestructure.external;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import org.noctisdev.sciallhexvsg.notifications.domain.ISMTP;
+import org.noctisdev.sciallhexvsg.notifications.domain.external.ISMTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;

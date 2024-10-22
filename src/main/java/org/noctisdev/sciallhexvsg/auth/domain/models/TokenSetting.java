@@ -2,6 +2,7 @@ package org.noctisdev.sciallhexvsg.auth.domain.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.noctisdev.sciallhexvsg.auth.domain.models.enums.TokenType;
 
 import java.io.Serializable;
 
@@ -9,6 +10,7 @@ import java.io.Serializable;
 public class TokenSetting implements Serializable {
     private Long id;
     private Boolean isActive;
-    private Integer verifyTokenExpirationDays;
-    private Integer authTokenExpirationDays;
+    private Integer tokenExpiration;
+    private Integer refreshTokenExpiration;
+    private TokenType tokenType;
 }

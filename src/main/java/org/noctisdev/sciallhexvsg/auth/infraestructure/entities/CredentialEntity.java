@@ -14,26 +14,17 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "credentials", schema = "sci_all_db")
+@Table(name = "credentials")
 public class CredentialEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "credential_id", nullable = false)
     private Long id;
 
-    @Size(max = 36)
     @NotNull
     @JdbcTypeCode(SqlTypes.VARCHAR)
     @Column(name = "credential_uuid", nullable = false, length = 36)
     private UUID credentialUuid;
-
-    @NotNull
-    @Column(name = "verified_at", nullable = false)
-    private LocalDate verifiedAt;
-
-    @NotNull
-    @Column(name = "created_at", nullable = false)
-    private LocalDate createdAt;
 
     @Size(max = 255)
     @NotNull
@@ -41,13 +32,17 @@ public class CredentialEntity {
     private String password;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "token_id", nullable = false)
+    @Column(name = "created_at", nullable = false)
+    private LocalDate createdAt;
+
+    @Column(name = "verified_at")
+    private LocalDate verifiedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contact_id")
+    private ContactEntity contactEntity;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "token_id")
     private TokenEntity tokenEntity;
-
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity userEntity;
-
 }

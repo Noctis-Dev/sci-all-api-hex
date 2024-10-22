@@ -17,15 +17,17 @@ public class Credential {
     private UUID credentialUuid;
 
     @NotNull
+    @Size(max = 255)
+    private String password;
+
+    @NotNull
     private LocalDate verifiedAt;
 
     @NotNull
     private LocalDate createdAt;
 
     @NotNull
-    @Size(max = 255)
-    private String password;
-
-    @NotNull
     private Token token;
+
+    private Contact contact;
 }
